@@ -1,5 +1,7 @@
 Copyright (c) 2015, Yujie Cao
+                    
                     ycao006
+                    
                     ycao006@ucr.edu
                     
 All rights reserved.
