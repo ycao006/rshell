@@ -36,6 +36,7 @@ int main(){
 		cout << commandList[i] << endl;
 		i++;	
 	}		
+	
 	return 0;
 
 }
@@ -77,7 +78,7 @@ int main(){
  		size_t found = 0;
 		int strl = 0;
 		string connectors[3] = {"||", "&&", ";"};
-		string Newconnectors[3] = {" || ", " && ", "   "}; 
+		string Newconnectors[3] = {" || ", " && ", " ; "}; 
 	
 		for (unsigned int i=0; i<3; i++){
 			found = 0;
