@@ -36,6 +36,7 @@ Origin:
 		gethostname(hostname,hostname_len);
 		cout<<getlogin()<<"@"<<hostname<<" $ ";
 		getline(cin,input);
+		//check 4 different types of input conditions when input is a string
 checkInput:
 		if((input== "")||(input.at(0))=='#'){
 			goto Origin;		
@@ -65,9 +66,8 @@ checkInput:
 					}
 				}
 				else{
-					errorFlag1 = true;
 					cout<<"syntax error in the end of the input"<<endl;
-				
+					goto Origin;					
 				}
 			
 			}
@@ -79,6 +79,8 @@ checkInput:
 		//convert string into cstring;
 		//breaks the cstring into parts and store them into input array commandList;
 		inputReform(input, commandList);
+
+		// check different input conditions when inputs in cstring
 		if(commandList[0] == NULL){
 			goto Origin;	
 		}
@@ -86,14 +88,14 @@ checkInput:
 				for(unsigned int k=0 ; k<3 ; k++){
 					if(commandList[0][0] == errorList[k]){
 						cout<<"syntax errors: || && ; at front"<<endl;
+						goto Origin;
 					}
 				}		
 		}
 		for(int k=0; k<3; k++){
 			if(commandList[0][0] == errorList[k]){
 				cout<< "syntax errors: || && ; at front"<<endl;		
-				errorFlag1 = true;
-				break;
+				goto Origin;
 			}		
 		}
 		int i=0;
@@ -102,7 +104,7 @@ checkInput:
 				for(int k=0 ; k<3 ; k++){
 					if(commandList[i+1][0] == errorList[k]){
 						cout << "syntax errors related to || && ;"<<endl;
-						break;		
+						goto Origin;		
 					}
 				}
 				int j = 0;
@@ -127,7 +129,7 @@ checkInput:
 				for(int k=0 ; k<3 ; k++){
 					if(commandList[i+1][0]==errorList[k]){
 						cout << "syntax errors related to || && ;"<<endl;
-						break;		
+						goto Origin;		
 					}
 				}
 				int j = 0;
@@ -152,7 +154,7 @@ checkInput:
 				for(int k=0 ; k<3 ; k++){
 					if(commandList[i+1][0]==errorList[k]){
 						cout << "syntax errors related to || && ;"<<endl;
-						break;		
+						goto Origin;		
 					}
 				}
 				int j = 0;

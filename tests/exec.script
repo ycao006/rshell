@@ -1,0 +1,206 @@
+Script started on Sun 19 Apr 2015 12:40:27 AM PDT
+~
+ycao006@hammer $ cs100
+[0;91m
+===============================================================================
+|                                                                             |
+| You have enabled settings specific for cs100.  Everything you do is being   |
+| recorded to measure your progress in the class.                             |
+|                                                                             |
+| Important commands for the class:                                           |
+|   * calcgrade.sh          displays a detailed breakdown of your grade       |
+|   * typespeed             practice typing unix commands                     |
+|                                                                             |
+| Important commands for general C++ programming:                             |
+|   * make                  don't call g++ manually; let make do the work!    |
+|   * gdb                   the GNU debugger                                  |
+|   * valgrind              get rid of your memory leaks                      |
+|   * cppcheck              static analysis tool                              |
+|   * man                   find help about any syscall / terminal command    |
+|                                                                             |
+===============================================================================
+[0m
+[s%%%%%%%%%%[u[0;32mycao006[0;36m@[0;32mcs100[0;36m:[0;32m~[0;95m [0;36m$[0m cd cs100
+[s%%%%%%%%%%[u[0;32mycao006[0;36m@[0;32mcs100[0;36m:[0;32m~/cs100[0;95m [0;36m$[0m ls
+firstrepo  lab	quiz  rshell  test  test2  ucr-cs100
+[s%%%%%%%%%%[u[0;32mycao006[0;36m@[0;32mcs100[0;36m:[0;32m~/cs100[0;95m [0;36m$[0m cd rshell
+[s%%%%%%%%%%[u[0;32mycao006[0;36m@[0;32mcs100[0;36m:[0;32m~/cs100/rshell[0;95m (master) [0;36m$[0m ;[Kls
+a.out	  LICENSE.md  main3.cpp  Makefile   src		test2.cpp  tests
+find.cpp  main2.cpp   main4.cpp  README.md  syscal.cpp	test.cpp
+[s%%%%%%%%%%[u[0;32mycao006[0;36m@[0;32mcs100[0;36m:[0;32m~/cs100/rshell[0;95m (master) [0;36m$[0m cd[K[Kmake
+g++ -Wall -Werror -ansi -pedantic -std=c++11 -o rshell ./src/main.cpp
+mkdir bin
+mv ./rshell ./bin
+[s%%%%%%%%%%[u[0;32mycao006[0;36m@[0;32mcs100[0;36m:[0;32m~/cs100/rshell[0;95m (master) [0;36m$[0m rshell/rshell[1Prshellbrshellirshellnrshell/rshell[C[C[C[C[C[C
+ycao006@hammer.cs.ucr.edu $ ls
+a.out  find.cpp    main2.cpp  main4.cpp  README.md  syscal.cpp	test.cpp
+bin    LICENSE.md  main3.cpp  Makefile	 src	    test2.cpp	tests
+ycao006@hammer.cs.ucr.edu $ pwd
+/class/classes/ycao006/cs100/rshell
+ycao006@hammer.cs.ucr.edu $ ls||pwd
+a.out  find.cpp    main2.cpp  main4.cpp  README.md  syscal.cpp	test.cpp
+bin    LICENSE.md  main3.cpp  Makefile	 src	    test2.cpp	tests
+ycao006@hammer.cs.ucr.edu $ ls&&pwd
+a.out  find.cpp    main2.cpp  main4.cpp  README.md  syscal.cpp	test.cpp
+bin    LICENSE.md  main3.cpp  Makefile	 src	    test2.cpp	tests
+/class/classes/ycao006/cs100/rshell
+ycao006@hammer.cs.ucr.edu $ ls;pwd
+a.out  find.cpp    main2.cpp  main4.cpp  README.md  syscal.cpp	test.cpp
+bin    LICENSE.md  main3.cpp  Makefile	 src	    test2.cpp	tests
+/class/classes/ycao006/cs100/rshell
+ycao006@hammer.cs.ucr.edu $ ls      ||  pwd
+a.out  find.cpp    main2.cpp  main4.cpp  README.md  syscal.cpp	test.cpp
+bin    LICENSE.md  main3.cpp  Makefile	 src	    test2.cpp	tests
+ycao006@hammer.cs.ucr.edu $ ls && pwd
+a.out  find.cpp    main2.cpp  main4.cpp  README.md  syscal.cpp	test.cpp
+bin    LICENSE.md  main3.cpp  Makefile	 src	    test2.cpp	tests
+/class/classes/ycao006/cs100/rshell
+ycao006@hammer.cs.ucr.edu $ ls;  ; pwd
+a.out  find.cpp    main2.cpp  main4.cpp  README.md  syscal.cpp	test.cpp
+bin    LICENSE.md  main3.cpp  Makefile	 src	    test2.cpp	tests
+/class/classes/ycao006/cs100/rshell
+ycao006@hammer.cs.ucr.edu $ ls    ls   ls || pwd
+There was an error in execvp: No such file or directory
+/class/classes/ycao006/cs100/rshell
+ycao006@hammer.cs.ucr.edu $ ls ;; pwd
+syntax errors related to || && ;
+ycao006@hammer.cs.ucr.edu $ ls  ls    ls |||| pwd
+syntax errors related to || && ;
+ycao006@hammer.cs.ucr.edu $ ls&&&& pwd
+syntax errors related to || && ;
+ycao006@hammer.cs.ucr.edu $ ls ; ; pwd
+syntax errors related to || && ;
+ycao006@hammer.cs.ucr.edu $ ls ;;; pwd
+syntax errors related to || && ;
+ycao006@hammer.cs.ucr.edu $ ls ||&& pwd
+syntax errors related to || && ;
+ycao006@hammer.cs.ucr.edu $ ls ; pwd && ls
+a.out  find.cpp    main2.cpp  main4.cpp  README.md  syscal.cpp	test.cpp
+bin    LICENSE.md  main3.cpp  Makefile	 src	    test2.cpp	tests
+/class/classes/ycao006/cs100/rshell
+a.out  find.cpp    main2.cpp  main4.cpp  README.md  syscal.cpp	test.cpp
+bin    LICENSE.md  main3.cpp  Makefile	 src	    test2.cpp	tests
+ycao006@hammer.cs.ucr.edu $ ls ; pwd &&& ls
+a.out  find.cpp    main2.cpp  main4.cpp  README.md  syscal.cpp	test.cpp
+bin    LICENSE.md  main3.cpp  Makefile	 src	    test2.cpp	tests
+syntax errors related to || && ;
+ycao006@hammer.cs.ucr.edu $ ls &| pwd
+ls: cannot access &|: No such file or directory
+ls: cannot access pwd: No such file or directory
+ycao006@hammer.cs.ucr.edu $ ls #
+ls: cannot access : No such file or directory
+ls: cannot access : No such file or directory
+ycao006@hammer.cs.ucr.edu $ ls#
+ls: cannot access : No such file or directory
+ls: cannot access : No such file or directory
+ycao006@hammer.cs.ucr.edu $ in general it  ls# should be fine, but   I think due to previous       s us command it beocme a bug iw  will exit and test it again
+There was an error in execvp: No such file or directory
+ycao006@hammer.cs.ucr.edu $ ls #
+ls: cannot access : No such file or directory
+ls: cannot access : No such file or directory
+ycao006@hammer.cs.ucr.edu $ exit
+[s%%%%%%%%%%[u[0;32mycao006[0;36m@[0;32mcs100[0;36m:[0;32m~/cs100/rshell[0;95m (master) [0;36m$[0m bin/rshell
+ycao006@hammer.cs.ucr.edu $ # ls#
+a.out  find.cpp    main2.cpp  main4.cpp  README.md  syscal.cpp	test.cpp
+bin    LICENSE.md  main3.cpp  Makefile	 src	    test2.cpp	tests
+ycao006@hammer.cs.ucr.edu $ ls #
+a.out  find.cpp    main2.cpp  main4.cpp  README.md  syscal.cpp	test.cpp
+bin    LICENSE.md  main3.cpp  Makefile	 src	    test2.cpp	tests
+ycao006@hammer.cs.ucr.edu $ #   ls
+ycao006@hammer.cs.ucr.edu $ # ls pwd 
+ycao006@hammer.cs.ucr.edu $ ls &| pwd
+ls: cannot access &|: No such file or directory
+ls: cannot access pwd: No such file or directory
+ycao006@hammer.cs.ucr.edu $ ls #
+ls: cannot access : No such file or directory
+ls: cannot access : No such file or directory
+ycao006@hammer.cs.ucr.edu $ exit
+[s%%%%%%%%%%[u[0;32mycao006[0;36m@[0;32mcs100[0;36m:[0;32m~/cs100/rshell[0;95m (master) [0;36m$[0m bin/rshell 
+ycao006@hammer.cs.ucr.edu $ 
+ycao006@hammer.cs.ucr.edu $ 
+ycao006@hammer.cs.ucr.edu $   
+ycao006@hammer.cs.ucr.edu $   
+ycao006@hammer.cs.ucr.edu $  
+ycao006@hammer.cs.ucr.edu $  
+ycao006@hammer.cs.ucr.edu $ ls |
+syntax error in the end of the input
+ycao006@hammer.cs.ucr.edu $ |
+syntax error with | & ; in the front
+ycao006@hammer.cs.ucr.edu $ ls &
+syntax error in the end of the input
+ycao006@hammer.cs.ucr.edu $ |ls
+syntax errors: || && ; at front
+ycao006@hammer.cs.ucr.edu $ ;
+syntax error with | & ; in the front
+ycao006@hammer.cs.ucr.edu $ ;;
+syntax error with ;; in the end
+ycao006@hammer.cs.ucr.edu $ ; ;
+syntax error in the end of the input
+ycao006@hammer.cs.ucr.edu $  ;
+syntax error in the end of the input
+ycao006@hammer.cs.ucr.edu $  ; 
+syntax errors: || && ; at front
+ycao006@hammer.cs.ucr.edu $     |   a
+syntax errors: || && ; at front
+ycao006@hammer.cs.ucr.edu $   |   #  ls
+syntax errors: || && ; at front
+ycao006@hammer.cs.ucr.edu $ ls    &  &
+syntax error in the end of the input
+ycao006@hammer.cs.ucr.edu $ ls   &&
+> aaa
+a.out  find.cpp    main2.cpp  main4.cpp  README.md  syscal.cpp	test.cpp
+bin    LICENSE.md  main3.cpp  Makefile	 src	    test2.cpp	tests
+There was an error in execvp: No such file or directory
+ycao006@hammer.cs.ucr.edu $ ls ||
+> pwd
+a.out  find.cpp    main2.cpp  main4.cpp  README.md  syscal.cpp	test.cpp
+bin    LICENSE.md  main3.cpp  Makefile	 src	    test2.cpp	tests
+ycao006@hammer.cs.ucr.edu $ lls||
+> pwd
+There was an error in execvp: No such file or directory
+/class/classes/ycao006/cs100/rshell
+ycao006@hammer.cs.ucr.edu $ ls %%% &&&\]   pdw  wd
+ls: cannot access %%%: No such file or directory
+pwd: ignoring non-option arguments
+/class/classes/ycao006/cs100/rshell
+ycao006@hammer.cs.ucr.edu $ pwd     ***    ls
+pwd: ignoring non-option arguments
+/class/classes/ycao006/cs100/rshell
+ycao006@hammer.cs.ucr.edu $ pwd    %  ||  ls
+pwd: ignoring non-option arguments
+/class/classes/ycao006/cs100/rshell
+ycao006@hammer.cs.ucr.edu $ pwd        pwd ;
+syntax error in the end of the input
+ycao006@hammer.cs.ucr.edu $ pwd   ; 
+syntax errors: || && ; at front
+ycao006@hammer.cs.ucr.edu $    ;   
+syntax errors: || && ; at front
+ycao006@hammer.cs.ucr.edu $        ^[[A     |    | 
+syntax errors: || && ; at front
+ycao006@hammer.cs.ucr.edu $    &   
+syntax errors: || && ; at front
+ycao006@hammer.cs.ucr.edu $ ls  '\;  \\\        ;   ; 
+Segmentation fault
+[s%%%%%%%%%%[u[0;32mycao006[0;36m@[0;32mcs100[0;36m:[0;32m~/cs100/rshell[0;95m (master) [0;36m$[0m this is a bug if you [K[K[K[Kyo[K[K[K[K[K[K: s[Kls  space ; spae[Kce again i s a bug
+bash: this: command not found
+bash: space: command not found
+[s%%%%%%%%%%[u[0;32mycao006[0;36m@[0;32mcs100[0;36m:[0;32m~/cs100/rshell[0;95m (master) [0;36m$[0m rs[K[Kbin/rshell 
+ycao006@hammer.cs.ucr.edu $ ls ;    #ls
+Segmentation fault
+[s%%%%%%%%%%[u[0;32mycao006[0;36m@[0;32mcs100[0;36m:[0;32m~/cs100/rshell[0;95m (master) [0;36m$[0m ls ||[K    # [Kls
+> l
+bash: l: command not found
+[s%%%%%%%%%%[u[0;32mycao006[0;36m@[0;32mcs100[0;36m:[0;32m~/cs100/rshell[0;95m (master) [0;36m$[0m bin/rshell 
+ycao006@hammer.cs.ucr.edu $ ls |   # s ls
+ls: cannot access |: No such file or directory
+ycao006@hammer.cs.ucr.edu $ ls   ||     #lh
+Segmentation fault
+[s%%%%%%%%%%[u[0;32mycao006[0;36m@[0;32mcs100[0;36m:[0;32m~/cs100/rshell[0;95m (master) [0;36m$[0m the bug is:: [K[K i [K[Kcommads can m[Knot end with spa e
+bash: the: command not found
+[s%%%%%%%%%%[u[0;32mycao006[0;36m@[0;32mcs100[0;36m:[0;32m~/cs100/rshell[0;95m (master) [0;36m$[0m exit
+exit
+~
+ycao006@hammer $ exit
+exit
+
+Script done on Sun 19 Apr 2015 12:55:34 AM PDT
