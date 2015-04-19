@@ -23,10 +23,11 @@ $ bin/rshell
 ```
 
 ##Limitations
-Input **ls;** will show: syntax error in the end of the input
-Input **ls;;** will show: syntax error with ;; in the end
-Input start with **#** will return nothing, user can input again 
+1. Input **ls;** will show: syntax error in the end of the input
+2. Input **ls;;** will show: syntax error with ;; in the end
+3. Input start with **#** will return nothing, user can input again 
+4. Input such as **ls||||pwd** will show the syntax error about connector and do the first command
 ##Bugs:
-1. ** ls   ;   ** is a bug
+1. **ls  ;** is a bug
 
 
