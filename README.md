@@ -22,6 +22,7 @@ $ bin/rshell
 ```
 
 ##Limitations
+under my program:
 1. Input **ls;** will show: syntax error in the end of the input
 2. Input **ls;;** will show: syntax error with ;; in the end
 3. Input start with **#** will return nothing, user can input again 
