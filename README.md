@@ -3,24 +3,30 @@ this project is for creating a shell that can run the commands in the terminal
 the key function that used in this program:
 fork() execvp() wait() exit()
 
-##Features:
+##Features
 1. this program prints the username and hostname
 2. this program can run many commands that ** execvp()**
 3. this program can run connectors: ** || && ;**
-4. 
-5. 
-##Prerequisite:
+4. this program can run mix among commands and connectors 
+ 
+##Prerequisite
 1. this program needs to run at Linux system.
 
-##How to install:
-`
+##How to install
+To run this program in your Linux system, please do following:
+```
 $ git clone https://github.com/ycao006/rshell.git
 $ cd rshell
 $ git checkout hw0
 $ make
 $ bin/rshell
+```
 
-
+##Limitations
+Input **ls;** will show: syntax error in the end of the input
+Input **ls;;** will show: syntax error with ;; in the end
+Input start with **#** will return nothing, user can input again 
 ##Bugs:
-1. **ls   ;   ** is a bug
+1. ** ls   ;   ** is a bug
+
 
