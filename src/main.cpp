@@ -78,9 +78,10 @@ checkInput:
 		}
 		//convert string into cstring;
 		//breaks the cstring into parts and store them into input array commandList;
-		cout<<"input is fine"<<endl;
 		inputReform(input, commandList);
-		cout<<"input inputreform is fine"<<endl;
+		if(commandList[0] == NULL){
+			goto Origin;	
+		}
 		if(commandList[1] == NULL){
 				for(unsigned int k=0 ; k<3 ; k++){
 					if(commandList[0][0] == errorList[k]){
@@ -189,32 +190,20 @@ checkInput:
 	//converted string into cstring;
 	void inputReform(string& str, char*array[]){
 		unsigned int pos = str.find('#');
-		char cstr[2048]; // in my code at this point char* cstr does not work.
-//		const char* test;
-		int i = 0;
+		char cstr[2048]; //  
 		// ignore the string after #
 		if(pos != string::npos){
 			str = str.substr(0,pos);
-//			cout << "str: "<< str << " str size:  " << str.length() << endl << endl << endl;
 		}
 	
 		connector_format(str);
-//		cout << "connector function is fine " << endl;
-//		test=str.c_str();//test
-//		cout << "c_str function is fine " << endl;
 		strcpy(cstr , str.c_str());
-//		cout << "strcpy function is fine" << endl;
+		int i = 0;
 		array[i] = strtok(cstr , " ");
 		while(array[i] != NULL){
 			i++;
 			array[i] = strtok(NULL," ");
 		}
-//		i=0;
-//		cout << "stroke function is fine"<<endl;
-//		while(array[i] != NULL){
-//			cout<<" i: "<<i<<" array[i] "<<array[i]<<endl;		
-//			i++;
-//		}
 		return;
 	}
 
@@ -227,11 +216,8 @@ checkInput:
 	
 		for (unsigned int i=0; i<3; i++){
 			found = 0;
-//			cout << connectors[i] << endl;     
 			while(found != string::npos){
-//				cout << "found0 " << found << endl;
 				found = str.find(connectors[i],found);
-//				cout << "found1 " << found << endl;
 				
 				if(found!=string::npos){
 					str.replace(found , connectors[i].length() , Newconnectors[i]);
@@ -244,8 +230,6 @@ checkInput:
 					}
 				} 
 				
-//				cout << "found2 " << found << endl;
-//				cout << "new str " << str << " new str size: " << str.length() << endl;
 			}
 		}
 
@@ -254,7 +238,6 @@ checkInput:
 
 	void syscall(char* argv[], bool& pass, int& status){
 	//	int status;	
-//		cout << " argv: " << argv << endl;		
 		int pid = fork();	
 		if(pid == -1){
 			perror("There was a error in fork line 19"); //syscall to output error
@@ -262,7 +245,6 @@ checkInput:
 		}	
 
 		else if(pid == 0){	
-//			cout<<"This is the child process"<<endl;
 			if( execvp(argv[0], argv) == -1){
 				perror("There was an error in execvp");
 				exit(EXIT_FAILURE); //when this child process finishes, then kills this process
@@ -281,11 +263,9 @@ checkInput:
 		}
 
 		if(WEXITSTATUS(status)==EXIT_SUCCESS){
-//			cout <<endl <<"child process success and exit" << endl;
 			pass=true;
 		}
 		else if(WEXITSTATUS(status)==EXIT_FAILURE){
-//			cout << "child process not success and exit"<<endl;
 			pass=false;
 		}
 
