@@ -1,7 +1,6 @@
 #rshell(hw0)
-this project is for creating a shell that can run the commands in the terminal
-the key function that used in this program:
-fork() execvp() wait() exit()
+1. this project is for creating a shell that can run the commands in the terminal
+2. the key function that used in this program: fork() execvp() wait() exit()
 
 ##Features
 1. this program prints the username and hostname
@@ -27,7 +26,7 @@ $ bin/rshell
 2. Input **ls;;** will show: syntax error with ;; in the end
 3. Input start with **#** will return nothing, user can input again 
 4. Input such as **ls||||pwd** will show the syntax error about connector and do the first command
-5. Input such as ** | ** will show up two syntax error
+5. Input such as **   |   ** will show up two syntax error
 
 ##Bugs:
 1. **ls  ;** is a bug
