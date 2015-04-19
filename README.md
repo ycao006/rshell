@@ -29,6 +29,8 @@ $ bin/rshell
 5. Input such as **   |   ** will show up two syntax error
 
 ##Bugs in my program:
-1. **ls  ;** is a bug
+1. the input command can not end with space 
+2. the input command can not have space between space and #
+3. the input such as |& &| will generate error that affects the following input commands
 
 
