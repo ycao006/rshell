@@ -21,15 +21,14 @@ $ make
 $ bin/rshell
 ```
 
-##Limitations in my program
-1. Input **ls;** will show: syntax error in the end of the input
-2. Input **ls;;** will show: syntax error with ;; in the end
-3. Input start with **#** will return nothing, user can input again 
-4. Input such as **ls||||pwd** will show the syntax error about connector 
+##situations in my program
+1. Input with only space, user can input again.
+2. Input start with **#**, program will return nothing, user can input again 
+3. Input with wrong connecors in the front or last or midlle, program will tell user syntax error
 
 ##Bugs in my program:
 1. the input command can not end with space 
-2. the input command can not have space between space and #
-3. the input such as |& &| will generate error that affects the following input commands
-
+2. the input such as |& &| will generate error that affects the following input commands
+3. after using ls plus a flag such as ls -a. the ls command can not use again
+ 
 
