@@ -1,4 +1,4 @@
-Script started on Sun 19 Apr 2015 12:40:27 AM PDT
+Script started on Sun 19 Apr 2015 04:40:49 PM PDT
 ~
 ycao006@hammer $ cs100
 [0;91m
@@ -20,187 +20,187 @@ ycao006@hammer $ cs100
 |                                                                             |
 ===============================================================================
 [0m
-[s%%%%%%%%%%[u[0;32mycao006[0;36m@[0;32mcs100[0;36m:[0;32m~[0;95m [0;36m$[0m cd cs100
-[s%%%%%%%%%%[u[0;32mycao006[0;36m@[0;32mcs100[0;36m:[0;32m~/cs100[0;95m [0;36m$[0m ls
-firstrepo  lab	quiz  rshell  test  test2  ucr-cs100
-[s%%%%%%%%%%[u[0;32mycao006[0;36m@[0;32mcs100[0;36m:[0;32m~/cs100[0;95m [0;36m$[0m cd rshell
-[s%%%%%%%%%%[u[0;32mycao006[0;36m@[0;32mcs100[0;36m:[0;32m~/cs100/rshell[0;95m (master) [0;36m$[0m ;[Kls
-a.out	  LICENSE.md  main3.cpp  Makefile   src		test2.cpp  tests
-find.cpp  main2.cpp   main4.cpp  README.md  syscal.cpp	test.cpp
-[s%%%%%%%%%%[u[0;32mycao006[0;36m@[0;32mcs100[0;36m:[0;32m~/cs100/rshell[0;95m (master) [0;36m$[0m cd[K[Kmake
+[s%%%%%%%%%%[u[0;32mycao006[0;36m@[0;32mcs100[0;36m:[0;32m~[0;95m [0;36m$[0m cd cs cs[K[K[K100
+[s%%%%%%%%%%[u[0;32mycao006[0;36m@[0;32mcs100[0;36m:[0;32m~/cs100[0;95m [0;36m$[0m cd rshell/
+[s%%%%%%%%%%[u[0;32mycao006[0;36m@[0;32mcs100[0;36m:[0;32m~/cs100/rshell[0;95m (master) [0;36m$[0m make
 g++ -Wall -Werror -ansi -pedantic -std=c++11 -o rshell ./src/main.cpp
 mkdir bin
 mv ./rshell ./bin
-[s%%%%%%%%%%[u[0;32mycao006[0;36m@[0;32mcs100[0;36m:[0;32m~/cs100/rshell[0;95m (master) [0;36m$[0m rshell/rshell[1Prshellbrshellirshellnrshell/rshell[C[C[C[C[C[C
+[s%%%%%%%%%%[u[0;32mycao006[0;36m@[0;32mcs100[0;36m:[0;32m~/cs100/rshell[0;95m (master) [0;36m$[0m /[Kbin/rshell 
+ycao006@hammer.cs.ucr.edu $ # test onw comm      e o commna  and
 ycao006@hammer.cs.ucr.edu $ ls
 a.out  find.cpp    main2.cpp  main4.cpp  README.md  syscal.cpp	test.cpp
 bin    LICENSE.md  main3.cpp  Makefile	 src	    test2.cpp	tests
+ycao006@hammer.cs.ucr.edu $ # test one command
 ycao006@hammer.cs.ucr.edu $ pwd
 /class/classes/ycao006/cs100/rshell
-ycao006@hammer.cs.ucr.edu $ ls||pwd
+ycao006@hammer.cs.ucr.edu $ # test two command with comm  nnectors  r
+ycao006@hammer.cs.ucr.edu $ ls || pwd
 a.out  find.cpp    main2.cpp  main4.cpp  README.md  syscal.cpp	test.cpp
 bin    LICENSE.md  main3.cpp  Makefile	 src	    test2.cpp	tests
-ycao006@hammer.cs.ucr.edu $ ls&&pwd
-a.out  find.cpp    main2.cpp  main4.cpp  README.md  syscal.cpp	test.cpp
-bin    LICENSE.md  main3.cpp  Makefile	 src	    test2.cpp	tests
-/class/classes/ycao006/cs100/rshell
-ycao006@hammer.cs.ucr.edu $ ls;pwd
-a.out  find.cpp    main2.cpp  main4.cpp  README.md  syscal.cpp	test.cpp
-bin    LICENSE.md  main3.cpp  Makefile	 src	    test2.cpp	tests
-/class/classes/ycao006/cs100/rshell
-ycao006@hammer.cs.ucr.edu $ ls      ||  pwd
-a.out  find.cpp    main2.cpp  main4.cpp  README.md  syscal.cpp	test.cpp
-bin    LICENSE.md  main3.cpp  Makefile	 src	    test2.cpp	tests
+ycao006@hammer.cs.ucr.edu $ ll  # test two commands with connector
 ycao006@hammer.cs.ucr.edu $ ls && pwd
 a.out  find.cpp    main2.cpp  main4.cpp  README.md  syscal.cpp	test.cpp
 bin    LICENSE.md  main3.cpp  Makefile	 src	    test2.cpp	tests
 /class/classes/ycao006/cs100/rshell
-ycao006@hammer.cs.ucr.edu $ ls;  ; pwd
+ycao006@hammer.cs.ucr.edu $ # test two commands with connectors 
+ycao006@hammer.cs.ucr.edu $ ls ; pwd
 a.out  find.cpp    main2.cpp  main4.cpp  README.md  syscal.cpp	test.cpp
 bin    LICENSE.md  main3.cpp  Makefile	 src	    test2.cpp	tests
 /class/classes/ycao006/cs100/rshell
-ycao006@hammer.cs.ucr.edu $ ls    ls   ls || pwd
-There was an error in execvp: No such file or directory
-/class/classes/ycao006/cs100/rshell
-ycao006@hammer.cs.ucr.edu $ ls ;; pwd
-syntax errors related to || && ;
-ycao006@hammer.cs.ucr.edu $ ls  ls    ls |||| pwd
-syntax errors related to || && ;
-ycao006@hammer.cs.ucr.edu $ ls&&&& pwd
-syntax errors related to || && ;
-ycao006@hammer.cs.ucr.edu $ ls ; ; pwd
-syntax errors related to || && ;
-ycao006@hammer.cs.ucr.edu $ ls ;;; pwd
-syntax errors related to || && ;
-ycao006@hammer.cs.ucr.edu $ ls ||&& pwd
-syntax errors related to || && ;
-ycao006@hammer.cs.ucr.edu $ ls ; pwd && ls
+ycao006@hammer.cs.ucr.edu $ # test two commands wih th connector and sa pace diff     
+ycao006@hammer.cs.ucr.edu $ ls    ;     pwd
 a.out  find.cpp    main2.cpp  main4.cpp  README.md  syscal.cpp	test.cpp
 bin    LICENSE.md  main3.cpp  Makefile	 src	    test2.cpp	tests
 /class/classes/ycao006/cs100/rshell
+ycao006@hammer.cs.ucr.edu $ # test two commands wio thout space
+ycao006@hammer.cs.ucr.edu $ ls||pwd
 a.out  find.cpp    main2.cpp  main4.cpp  README.md  syscal.cpp	test.cpp
 bin    LICENSE.md  main3.cpp  Makefile	 src	    test2.cpp	tests
-ycao006@hammer.cs.ucr.edu $ ls ; pwd &&& ls
+ycao006@hammer.cs.ucr.edu $ # test two commands without         and connectors without a s              with space on one      
+ycao006@hammer.cs.ucr.edu $ ls&&       pwd
 a.out  find.cpp    main2.cpp  main4.cpp  README.md  syscal.cpp	test.cpp
 bin    LICENSE.md  main3.cpp  Makefile	 src	    test2.cpp	tests
-syntax errors related to || && ;
-ycao006@hammer.cs.ucr.edu $ ls &| pwd
-ls: cannot access &|: No such file or directory
-ls: cannot access pwd: No such file or directory
-ycao006@hammer.cs.ucr.edu $ ls #
+/class/classes/ycao006/cs100/rshell
+ycao006@hammer.cs.ucr.edu $ test one     two commands with r erong co           th                     o tw  t one command with connecot r in front
+test: extra argument `command'
+ycao006@hammer.cs.ucr.edu $ ||ls
+syntax errors: || && ; at front
+ycao006@hammer.cs.ucr.edu $ # test one command wih conneco tor in front
+ycao006@hammer.cs.ucr.edu $ || ls
+syntax errors: || && ; at front
+ycao006@hammer.cs.ucr.edu $ # test one command with wrong co             with connector in  after
+ycao006@hammer.cs.ucr.edu $ ls ||  PWD   &&
+> pwd
+ls: cannot access &: No such file or directory
+ls: cannot access d: No such file or directory
+ls: cannot access : No such file or directory
+ls: cannot access co Šèµÿ: No such file or directory
+ls: cannot access : No such file or directory
+ls: cannot access  b;: No such file or directory
+pwd: ignoring non-option arguments
+/class/classes/ycao006/cs100/rshell
+ycao006@hammer.cs.ucr.edu $ $   # this is a bug that ake     mae ke ls not work anymore
+ycao006@hammer.cs.ucr.edu $ ls
 ls: cannot access : No such file or directory
 ls: cannot access : No such file or directory
-ycao006@hammer.cs.ucr.edu $ ls#
 ls: cannot access : No such file or directory
+ls: cannot access co Šèµÿ: No such file or directory
 ls: cannot access : No such file or directory
-ycao006@hammer.cs.ucr.edu $ in general it  ls# should be fine, but   I think due to previous       s us command it beocme a bug iw  will exit and test it again
-There was an error in execvp: No such file or directory
-ycao006@hammer.cs.ucr.edu $ ls #
-ls: cannot access : No such file or directory
-ls: cannot access : No such file or directory
+ls: cannot access  b;: No such file or directory
+ycao006@hammer.cs.ucr.edu $ # we need to quir   t and conit   ntinue doing rest e tests
 ycao006@hammer.cs.ucr.edu $ exit
-[s%%%%%%%%%%[u[0;32mycao006[0;36m@[0;32mcs100[0;36m:[0;32m~/cs100/rshell[0;95m (master) [0;36m$[0m bin/rshell
-ycao006@hammer.cs.ucr.edu $ # ls#
-a.out  find.cpp    main2.cpp  main4.cpp  README.md  syscal.cpp	test.cpp
-bin    LICENSE.md  main3.cpp  Makefile	 src	    test2.cpp	tests
-ycao006@hammer.cs.ucr.edu $ ls #
-a.out  find.cpp    main2.cpp  main4.cpp  README.md  syscal.cpp	test.cpp
-bin    LICENSE.md  main3.cpp  Makefile	 src	    test2.cpp	tests
-ycao006@hammer.cs.ucr.edu $ #   ls
-ycao006@hammer.cs.ucr.edu $ # ls pwd 
-ycao006@hammer.cs.ucr.edu $ ls &| pwd
-ls: cannot access &|: No such file or directory
-ls: cannot access pwd: No such file or directory
-ycao006@hammer.cs.ucr.edu $ ls #
-ls: cannot access : No such file or directory
-ls: cannot access : No such file or directory
-ycao006@hammer.cs.ucr.edu $ exit
-[s%%%%%%%%%%[u[0;32mycao006[0;36m@[0;32mcs100[0;36m:[0;32m~/cs100/rshell[0;95m (master) [0;36m$[0m bin/rshell 
-ycao006@hammer.cs.ucr.edu $ 
-ycao006@hammer.cs.ucr.edu $ 
-ycao006@hammer.cs.ucr.edu $   
-ycao006@hammer.cs.ucr.edu $   
-ycao006@hammer.cs.ucr.edu $  
-ycao006@hammer.cs.ucr.edu $  
-ycao006@hammer.cs.ucr.edu $ ls |
-syntax error in the end of the input
-ycao006@hammer.cs.ucr.edu $ |
-syntax error with | & ; in the front
-ycao006@hammer.cs.ucr.edu $ ls &
-syntax error in the end of the input
+[s%%%%%%%%%%[u[0;32mycao006[0;36m@[0;32mcs100[0;36m:[0;32m~/cs100/rshell[0;95m (master) [0;36m$[0m bin/rshell 
+ycao006@hammer.cs.ucr.edu $ # test one command with connector           wrong connector in frot nt
 ycao006@hammer.cs.ucr.edu $ |ls
 syntax errors: || && ; at front
+ycao006@hammer.cs.ucr.edu $ # test onw   e command with ron   wrong connector f after
+ycao006@hammer.cs.ucr.edu $ ls|
+syntax error in the end of the input
+ycao006@hammer.cs.ucr.edu $ # test two commands with wrong co    connector in front
+ycao006@hammer.cs.ucr.edu $ # test w two commands with                          | ls pwd
+syntax errors: || && ; at front
+ycao006@hammer.cs.ucr.edu $ # test two commands with c wrong connector in bewr  tween
+ycao006@hammer.cs.ucr.edu $ ls ||| pwd
+syntax errors related to || && ;
+ycao006@hammer.cs.ucr.edu $ # test two commands with wrong connector after
+ycao006@hammer.cs.ucr.edu $ ls |||   pwd |
+syntax error in the end of the input
+ycao006@hammer.cs.ucr.edu $ # test # with         commands with # in fornt
+ycao006@hammer.cs.ucr.edu $ # ls
+ycao006@hammer.cs.ucr.edu $ # test command with # in teh    he middle
+ycao006@hammer.cs.ucr.edu $ ls # w pwd
+a.out  find.cpp    main2.cpp  main4.cpp  README.md  syscal.cpp	test.cpp
+bin    LICENSE.md  main3.cpp  Makefile	 src	    test2.cpp	tests
+ycao006@hammer.cs.ucr.edu $ # test command with # af  in the end
+ycao006@hammer.cs.ucr.edu $ ls ; pwd#
+a.out  find.cpp    main2.cpp  main4.cpp  README.md  syscal.cpp	test.cpp
+bin    LICENSE.md  main3.cpp  Makefile	 src	    test2.cpp	tests
+/class/classes/ycao006/cs100/rshell
+ycao006@hammer.cs.ucr.edu $ # test only space
+ycao006@hammer.cs.ucr.edu $   
+ycao006@hammer.cs.ucr.edu $ # test only connector         ww rong connectos rs
+ycao006@hammer.cs.ucr.edu $ |
+syntax error with | & ; in the front
+ycao006@hammer.cs.ucr.edu $ ;;;
+syntax error with ;; in the end
+ycao006@hammer.cs.ucr.edu $ # test only right connectors
 ycao006@hammer.cs.ucr.edu $ ;
 syntax error with | & ; in the front
-ycao006@hammer.cs.ucr.edu $ ;;
-syntax error with ;; in the end
-ycao006@hammer.cs.ucr.edu $ ; ;
-syntax error in the end of the input
-ycao006@hammer.cs.ucr.edu $  ;
-syntax error in the end of the input
-ycao006@hammer.cs.ucr.edu $  ; 
+ycao006@hammer.cs.ucr.edu $ ||
+> ls
 syntax errors: || && ; at front
-ycao006@hammer.cs.ucr.edu $     |   a
+ycao006@hammer.cs.ucr.edu $ # test random strange input
+ycao006@hammer.cs.ucr.edu $     ;    
 syntax errors: || && ; at front
-ycao006@hammer.cs.ucr.edu $   |   #  ls
+ycao006@hammer.cs.ucr.edu $ #    ;  
 syntax errors: || && ; at front
-ycao006@hammer.cs.ucr.edu $ ls    &  &
-syntax error in the end of the input
-ycao006@hammer.cs.ucr.edu $ ls   &&
-> aaa
-a.out  find.cpp    main2.cpp  main4.cpp  README.md  syscal.cpp	test.cpp
-bin    LICENSE.md  main3.cpp  Makefile	 src	    test2.cpp	tests
-There was an error in execvp: No such file or directory
-ycao006@hammer.cs.ucr.edu $ ls ||
-> pwd
-a.out  find.cpp    main2.cpp  main4.cpp  README.md  syscal.cpp	test.cpp
-bin    LICENSE.md  main3.cpp  Makefile	 src	    test2.cpp	tests
-ycao006@hammer.cs.ucr.edu $ lls||
-> pwd
-There was an error in execvp: No such file or directory
-/class/classes/ycao006/cs100/rshell
-ycao006@hammer.cs.ucr.edu $ ls %%% &&&\]   pdw  wd
-ls: cannot access %%%: No such file or directory
+ycao006@hammer.cs.ucr.edu $ #   # the following is a bug     second u bug ht  that I found
+ycao006@hammer.cs.ucr.edu $ ls    ;    
+Segmentation fault
+[s%%%%%%%%%%[u[0;32mycao006[0;36m@[0;32mcs100[0;36m:[0;32m~/cs100/rshell[0;95m (master) [0;36m$[0m l[Ka[Kbin/rshell 
+ycao006@hammer.cs.ucr.edu $ # the following is the thir bu    rd bug that I found
+ycao006@hammer.cs.ucr.edu $ #te   #   ls -a
+.      bin	 LICENSE.md  main4.cpp	    README.md	test2.cpp
+..     find.cpp  main2.cpp   .main.cpp.swp  src		test.cpp
+a.out  .git	 main3.cpp   Makefile	    syscal.cpp	tests
+ycao006@hammer.cs.ucr.edu $ ls -l
+total 84
+-rwx------ 1 ycao006 classes 22487 Apr 19 16:21 a.out
+drwx------ 2 ycao006 classes  4096 Apr 19 16:35 bin
+-rw------- 1 ycao006 classes  1320 Apr 18 23:03 find.cpp
+-rw------- 1 ycao006 classes   362 Apr 12 15:52 LICENSE.md
+-rw------- 1 ycao006 classes  2758 Apr 18 23:03 main2.cpp
+-rw------- 1 ycao006 classes  5637 Apr 18 23:03 main3.cpp
+-rw------- 1 ycao006 classes  7351 Apr 18 23:03 main4.cpp
+-rw------- 1 ycao006 classes   320 Apr 18 23:03 Makefile
+-rw------- 1 ycao006 classes  1169 Apr 19 01:26 README.md
+drwx------ 2 ycao006 classes  4096 Apr 19 16:21 src
+-rw------- 1 ycao006 classes  3521 Apr 18 23:03 syscal.cpp
+-rw------- 1 ycao006 classes   278 Apr 18 23:03 test2.cpp
+-rw------- 1 ycao006 classes   603 Apr 18 23:03 test.cpp
+drwx------ 2 ycao006 classes  4096 Apr 19 16:35 tests
+ycao006@hammer.cs.ucr.edu $ # it works fine with commands +    a    and tag
+ycao006@hammer.cs.ucr.edu $ # howver   ever, after that it    ls does not work anymore
+ycao006@hammer.cs.ucr.edu $ ls
+ls: cannot access : No such file or directory
+ycao006@hammer.cs.ucr.edu $ pwd
 pwd: ignoring non-option arguments
 /class/classes/ycao006/cs100/rshell
-ycao006@hammer.cs.ucr.edu $ pwd     ***    ls
-pwd: ignoring non-option arguments
-/class/classes/ycao006/cs100/rshell
-ycao006@hammer.cs.ucr.edu $ pwd    %  ||  ls
-pwd: ignoring non-option arguments
-/class/classes/ycao006/cs100/rshell
-ycao006@hammer.cs.ucr.edu $ pwd        pwd ;
+ycao006@hammer.cs.ucr.edu $ # we nned    e  eed to exit and come beck o for any     another test
+ycao006@hammer.cs.ucr.edu $ exit
+[s%%%%%%%%%%[u[0;32mycao006[0;36m@[0;32mcs100[0;36m:[0;32m~/cs100/rshell[0;95m (master) [0;36m$[0m bin/rshell 
+ycao006@hammer.cs.ucr.edu $ # test wired combination of connectors
+ycao006@hammer.cs.ucr.edu $ ls |$ & pwd
+ls: cannot access |&: No such file or directory
+ls: cannot access pwd: No such file or directory
+ycao006@hammer.cs.ucr.edu $ # ths is is the 4th buf that I found, c   
+ycao006@hammer.cs.ucr.edu $ # my program can not deal w wrong con         conec  nectors like : &|^[[D^[[D^[[D^[[D                     
+ycao006@hammer.cs.ucr.edu $ # tess t input is only a ENter    nter
+ycao006@hammer.cs.ucr.edu $ 
+ycao006@hammer.cs.ucr.edu $ # th est another wired case
+ycao006@hammer.cs.ucr.edu $     ;   |   &
 syntax error in the end of the input
-ycao006@hammer.cs.ucr.edu $ pwd   ; 
-syntax errors: || && ; at front
-ycao006@hammer.cs.ucr.edu $    ;   
-syntax errors: || && ; at front
-ycao006@hammer.cs.ucr.edu $        ^[[A     |    | 
-syntax errors: || && ; at front
-ycao006@hammer.cs.ucr.edu $    &   
-syntax errors: || && ; at front
-ycao006@hammer.cs.ucr.edu $ ls  '\;  \\\        ;   ; 
+ycao006@hammer.cs.ucr.edu $   |         # test another wired case
+ycao006@hammer.cs.ucr.edu $     a   ;   
 Segmentation fault
-[s%%%%%%%%%%[u[0;32mycao006[0;36m@[0;32mcs100[0;36m:[0;32m~/cs100/rshell[0;95m (master) [0;36m$[0m this is a bug if you [K[K[K[Kyo[K[K[K[K[K[K: s[Kls  space ; spae[Kce again i s a bug
-bash: this: command not found
-bash: space: command not found
-[s%%%%%%%%%%[u[0;32mycao006[0;36m@[0;32mcs100[0;36m:[0;32m~/cs100/rshell[0;95m (master) [0;36m$[0m rs[K[Kbin/rshell 
-ycao006@hammer.cs.ucr.edu $ ls ;    #ls
-Segmentation fault
-[s%%%%%%%%%%[u[0;32mycao006[0;36m@[0;32mcs100[0;36m:[0;32m~/cs100/rshell[0;95m (master) [0;36m$[0m ls ||[K    # [Kls
-> l
-bash: l: command not found
-[s%%%%%%%%%%[u[0;32mycao006[0;36m@[0;32mcs100[0;36m:[0;32m~/cs100/rshell[0;95m (master) [0;36m$[0m bin/rshell 
-ycao006@hammer.cs.ucr.edu $ ls |   # s ls
-ls: cannot access |: No such file or directory
-ycao006@hammer.cs.ucr.edu $ ls   ||     #lh
-Segmentation fault
-[s%%%%%%%%%%[u[0;32mycao006[0;36m@[0;32mcs100[0;36m:[0;32m~/cs100/rshell[0;95m (master) [0;36m$[0m the bug is:: [K[K i [K[Kcommads can m[Knot end with spa e
-bash: the: command not found
+[s%%%%%%%%%%[u[0;32mycao006[0;36m@[0;32mcs100[0;36m:[0;32m~/cs100/rshell[0;95m (master) [0;36m$[0m bin/rshell [7Pmakebin/rshell 
+ycao006@hammer.cs.ucr.edu $ # th  that is the fifth bug m  y c prgram          :
+ycao006@hammer.cs.ucr.edu $ # the commands can not end with spaces
+ycao006@hammer.cs.ucr.edu $ # however oon  nly spaces is fine
+ycao006@hammer.cs.ucr.edu $     
+ycao006@hammer.cs.ucr.edu $ # test another                # test wired case with wrong connectors in the end
+ycao006@hammer.cs.ucr.edu $    ls     ;     pwd    ;
+syntax error in the end of the input
+ycao006@hammer.cs.ucr.edu $ # test wired case with wrong connectors in teh   the front
+ycao006@hammer.cs.ucr.edu $ ||    | ls      ;
+syntax error in the end of the input
+ycao006@hammer.cs.ucr.edu $ # thsi  at is all the test cases I hae ve
+ycao006@hammer.cs.ucr.edu $ # exit      ei xit
 [s%%%%%%%%%%[u[0;32mycao006[0;36m@[0;32mcs100[0;36m:[0;32m~/cs100/rshell[0;95m (master) [0;36m$[0m exit
 exit
 ~
 ycao006@hammer $ exit
 exit
 
-Script done on Sun 19 Apr 2015 12:55:34 AM PDT
+Script done on Sun 19 Apr 2015 05:05:01 PM PDT

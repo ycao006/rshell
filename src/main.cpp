@@ -19,8 +19,8 @@ int main(){
 
 	while(1){
 Origin:		
-		int maxCap=2048;
-		int I=0;
+		unsigned int maxCap=2048;
+		unsigned int I=0;
 		char* commandList[2048];
 		string input;
 		string input2;
@@ -255,6 +255,7 @@ checkInput:
 				exit(EXIT_SUCCESS);
 			}
 		}
+		
 
 		else if(pid > 0){//if it is the parent function
 			int result_wait = wait(&status);//wait wait for the child process
