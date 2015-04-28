@@ -6,14 +6,25 @@
 #include <fcntl.h>
 #include <string.h>
 #include <string>
-
+#include <dirent.h>
+#include <sys/types.h>
+#include <errno.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <time.h>
+#include <stdlib.h>
 using namespace std;
 
 int main(int argc, char** argv){
     
+    struct stat sb;
+    if(!(stat(argv[2], &sb)==-1)){
+        cout << "file already exists" << endl;
+        exit(1);
+    }
+
     ifstream in(argv[1]);
     ofstream out(argv[2]);
-
     int fd1 = open(argv[1], O_RDWR);
     if(fd1 == -1){
         perror("open1");
@@ -28,8 +39,7 @@ int main(int argc, char** argv){
     char check1[] = "a";
     char check2[] = "b";
     char check3[] = "c";
-    if(strcmp(argv[3], check1)){
-
+    if(strcmp(argv[3], check1)== 0){
         char letter;
     
         if(!in.good()){
@@ -38,13 +48,10 @@ int main(int argc, char** argv){
         }
         while(in.good()){
             letter = in.get();
-            if(in.good())
-            {
-                out.put(letter);
-            }
+            out.put(letter);
         }
     }
-    else if(strcmp(argv[3], check2)){
+    else if(strcmp(argv[3], check2)==0){
         char charbuff;
         void* buff = &charbuff;
         while(read(fd1, buff, 1))
@@ -56,7 +63,7 @@ int main(int argc, char** argv){
         }
     }
     
-    else if(strcmp(argv[3], check3)){
+    else if(strcmp(argv[3], check3)==0){
         char charbuff2;
         void* buff2 = &charbuff2;
 
@@ -68,6 +75,18 @@ int main(int argc, char** argv){
             perror("write2");
             exit(1);
         }
+    }
+
+    in.close();
+    out.close();
+
+    if(-1 == close(fd1)){
+        perror("close1");
+        exit(1);
+    }
+    if(-1 == close(fd2)){
+        perror("close2");
+        exit(1);
     }
     return 0;
 }
