@@ -20,10 +20,11 @@ using namespace std;
 int main(int argc, char** argv){
     bool flag = false;
     char achar[] = "a";
-    if((strcmp(argv[3],achar)) == 0){
-	flag = true;
+    if(argc > 3){
+        if((strcmp(achar, argv[3])) == 0){
+	        flag = true;
+        }
     }
-    
     struct stat sb;
     if(!(stat(argv[2], &sb)==-1)){
         cout << "file already exists" << endl;
@@ -32,29 +33,35 @@ int main(int argc, char** argv){
 
     ifstream in(argv[1]);
     ofstream out(argv[2]);
-    int fd1 = open(argv[1], O_RDWR);
+    int fd1 = open(argv[1], O_RDONLY);
     if(fd1 == -1){
         perror("open1");
         exit(1);
     }
-    int fd2 = open(argv[2], O_RDWR | O_CREAT, 0777);
+    int fd2 = open(argv[2], O_WRONLY | O_CREAT, 0777);
     if(fd2 == -1){
         perror("open2");
         exit(1);
     }
 
     if(!flag){
-        char letter;
-    
-        if(!in.good()){
-            cout << "Cannot read file.\n";
-            exit(1);
-        }
-        while(in.good()){
-            letter = in.get();
-            out.put(letter);
-        }
+        
+        char charbuff2[BUFSIZ];
+        void* buff2 = &charbuff2; 
+        int s;
+        while((s = read(fd1, buff2, BUFSIZ)) != 0)
+        {
+            if(s == -1){
+                perror("read2");
+                exit(1);
+            }
+            if(write(fd2, buff2, s) == -1){
+                perror("write2");
+                exit(1);
+            } 
 
+        }
+              
     }
     else{
 	cout << "CP Type : Wall Clock Time - User Time - System Time\n";
@@ -69,10 +76,11 @@ int main(int argc, char** argv){
             exit(1);
         }
 
-        while(in.good()){
-            letter = in.get();
+        while((in.get(letter))){
             out.put(letter);
         }
+
+        
 
 	Time_1.elapsedTime(WT1, UT1, ST1);
 	cout << "get and put: " << WT1 << " - " << UT1 << " - " << ST1 << endl;
@@ -111,7 +119,7 @@ int main(int argc, char** argv){
                 perror("read2");
                 exit(1);
             }
-            if(write(fd2, buff2, BUFSIZ) == -1){
+            if(write(fd2, buff2, s) == -1){
                 perror("write2");
                 exit(1);
             }   
