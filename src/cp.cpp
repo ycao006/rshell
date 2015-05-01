@@ -32,7 +32,7 @@ int main(int argc, char** argv){
         perror("open1");
         exit(1);
     }
-    int fd2 = open(argv[1], O_RDWR|O_CREAT);
+    int fd2 = open(argv[2], O_RDWR | O_CREAT, 0777);
     if(fd2 == -1){
         perror("open2");
         exit(1);
@@ -61,44 +61,48 @@ int main(int argc, char** argv){
     else if(strcmp(argv[3], check2) == 0){
         char charbuff;
         void* buff = &charbuff;
-	Timer Time_1;
-	double UT1, WT1, ST1;
-	Time_1.start();
-	int t;
-        while( (t = read(fd1, buff, 1)))
+	    Timer Time_1;
+	    double UT1, WT1, ST1;
+	    Time_1.start();
+	    int t;
+        while( (t = read(fd1, buff, 1)) != 0)
         {
-	    if(t == -1){
-		perror("read");
-		exit(1);
-	    }
+	        if(t == -1){
+		        perror("read");
+		        exit(1);
+	        }
             if(write(fd2, buff, 1) == -1){
                 perror("write");
                 exit(1);
             }
         }
-	Time_1.elapsedTime(WT1, UT1, ST1);
-	cout << WT1 << " " << UT1 << " " << ST1 << endl;
+	    Time_1.elapsedTime(WT1, UT1, ST1);
+	    cout << WT1 << " " << UT1 << " " << ST1 << endl;
     }
     
     else if(strcmp(argv[3], check3)==0){
-        char charbuff2;
+        char charbuff2[BUFSIZ];
         void* buff2 = &charbuff2;
 
-	Timer Time_1;
-	double UT1, WT1, ST1;
-	Time_1.start();
+	    Timer Time_1;
+	    double UT1, WT1, ST1;
+	    Time_1.start();
+        int s;
+        while((s = read(fd1, buff2, BUFSIZ)) != 0)
+        {
+            if(s == -1){
+                perror("read2");
+                exit(1);
+            }
+            if(write(fd2, buff2, BUFSIZ) == -1){
+                perror("write2");
+                exit(1);
+            }   
 
-        if(-1 == read(fd1, buff2, BUFSIZ)){
-            perror("read2");
-            exit(1);
-        }
-        if(!write(fd2, buff2, BUFSIZ)){
-            perror("write2");
-            exit(1);
         }
 
-	Time_1.elapsedTime(WT1, UT1, ST1);
-	cout << WT1 << " " << UT1 << " " << ST1 << endl;
+       	Time_1.elapsedTime(WT1, UT1, ST1);
+	    cout << WT1 << " " << UT1 << " " << ST1 << endl;
     }
 
     in.close();
