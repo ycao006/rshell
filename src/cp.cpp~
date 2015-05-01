@@ -1,4 +1,3 @@
-#include "Timer.h"
 #include <iostream>
 #include <stdio.h>
 #include <unistd.h>
@@ -14,7 +13,6 @@
 #include <sys/stat.h>
 #include <time.h>
 #include <stdlib.h>
-
 using namespace std;
 
 int main(int argc, char** argv){
@@ -41,11 +39,8 @@ int main(int argc, char** argv){
     char check1[] = "a";
     char check2[] = "b";
     char check3[] = "c";
-    if(strcmp(argv[3], check1) == 0){
+    if(strcmp(argv[3], check1)== 0){
         char letter;
-	Timer Time_1;
-	double UT1, WT1, ST1;
-	Time_1.start();
     
         if(!in.good()){
             cout << "Cannot read file.\n";
@@ -55,50 +50,31 @@ int main(int argc, char** argv){
             letter = in.get();
             out.put(letter);
         }
-	Time_1.elapsedTime(WT1, UT1, ST1);
-	cout << WT1 << " " << UT1 << " " << ST1 << endl;
     }
-    else if(strcmp(argv[3], check2) == 0){
+    else if(strcmp(argv[3], check2)==0){
         char charbuff;
         void* buff = &charbuff;
-	Timer Time_1;
-	double UT1, WT1, ST1;
-	Time_1.start();
-	int t;
-        while( (t = read(fd1, buff, 1)))
+        while(read(fd1, buff, 1))
         {
-	    if(t == -1){
-		perror("read");
-		exit(1);
-	    }
-            if(write(fd2, buff, 1) == -1){
+            if(!write(fd2, buff, 1)){
                 perror("write");
                 exit(1);
             }
         }
-	Time_1.elapsedTime(WT1, UT1, ST1);
-	cout << WT1 << " " << UT1 << " " << ST1 << endl;
     }
     
     else if(strcmp(argv[3], check3)==0){
         char charbuff2;
         void* buff2 = &charbuff2;
 
-	Timer Time_1;
-	double UT1, WT1, ST1;
-	Time_1.start();
-
         if(-1 == read(fd1, buff2, BUFSIZ)){
             perror("read2");
             exit(1);
         }
-        if(!write(fd2, buff2, BUFSIZ)){
+        if(!write(fd2, buff2,BUFSIZ)){
             perror("write2");
             exit(1);
         }
-
-	Time_1.elapsedTime(WT1, UT1, ST1);
-	cout << WT1 << " " << UT1 << " " << ST1 << endl;
     }
 
     in.close();
