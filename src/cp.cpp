@@ -18,6 +18,11 @@
 using namespace std;
 
 int main(int argc, char** argv){
+    bool flag = false;
+    char achar[] = "a";
+    if((strcmp(argv[3],achar)) == 0){
+	flag = true;
+    }
     
     struct stat sb;
     if(!(stat(argv[2], &sb)==-1)){
@@ -37,15 +42,9 @@ int main(int argc, char** argv){
         perror("open2");
         exit(1);
     }
-    
-    char check1[] = "a";
-    char check2[] = "b";
-    char check3[] = "c";
-    if(strcmp(argv[3], check1) == 0){
+
+    if(!flag){
         char letter;
-	Timer Time_1;
-	double UT1, WT1, ST1;
-	Time_1.start();
     
         if(!in.good()){
             cout << "Cannot read file.\n";
@@ -55,15 +54,34 @@ int main(int argc, char** argv){
             letter = in.get();
             out.put(letter);
         }
-	Time_1.elapsedTime(WT1, UT1, ST1);
-	cout << WT1 << " " << UT1 << " " << ST1 << endl;
+
     }
-    else if(strcmp(argv[3], check2) == 0){
+    else{
+	cout << "CP Type : Wall Clock Time - User Time - System Time\n";
+
+	char letter;
+	Timer Time_1;
+	double UT1, WT1, ST1;
+	Time_1.start();
+    
+        if(!in.good()){
+            cout << "Cannot read file.\n";
+            exit(1);
+        }
+
+        while(in.good()){
+            letter = in.get();
+            out.put(letter);
+        }
+
+	Time_1.elapsedTime(WT1, UT1, ST1);
+	cout << "get and put: " << WT1 << " - " << UT1 << " - " << ST1 << endl;
+
         char charbuff;
         void* buff = &charbuff;
-	    Timer Time_1;
-	    double UT1, WT1, ST1;
-	    Time_1.start();
+	    Timer Time_2;
+	    double UT2, WT2, ST2;
+	    Time_2.start();
 	    int t;
         while( (t = read(fd1, buff, 1)) != 0)
         {
@@ -76,17 +94,16 @@ int main(int argc, char** argv){
                 exit(1);
             }
         }
-	    Time_1.elapsedTime(WT1, UT1, ST1);
-	    cout << WT1 << " " << UT1 << " " << ST1 << endl;
-    }
+	    Time_2.elapsedTime(WT2, UT2, ST2);
+	    cout << "read and write: " << WT2 << " - " << UT2 << " - " << ST2 << endl;
     
-    else if(strcmp(argv[3], check3)==0){
+   
         char charbuff2[BUFSIZ];
         void* buff2 = &charbuff2;
 
-	    Timer Time_1;
-	    double UT1, WT1, ST1;
-	    Time_1.start();
+	    Timer Time_3;
+	    double UT3, WT3, ST3;
+	    Time_3.start();
         int s;
         while((s = read(fd1, buff2, BUFSIZ)) != 0)
         {
@@ -101,9 +118,10 @@ int main(int argc, char** argv){
 
         }
 
-       	Time_1.elapsedTime(WT1, UT1, ST1);
-	    cout << WT1 << " " << UT1 << " " << ST1 << endl;
-    }
+       	Time_3.elapsedTime(WT3, UT3, ST3);
+	    cout << "read and write with buffer: " << WT3 << " - " << UT3 << " - " << ST3 << endl;
+	}
+    
 
     in.close();
     out.close();
