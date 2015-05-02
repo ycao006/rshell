@@ -93,17 +93,11 @@ int main(int argc, char** argv){
 			}
 		}
 		else{
-			while(argv[i][j] != '\0'){
-				if((argv[i][j] == 'a')||(argv[i][j] == 'l')||(argv[i][j] == 'R')){
-					arguments.push_back(argv[i]);
-				}
-				else{
-					cout<<"sorry invalid input."<<endl;
-					return 0;
-				}
-				j++;
-			}
+			
+			arguments.push_back(argv[i]);
 		}
+			
+		
 		
 	}
 	if((argc >1)&&(arguments.size()>0) ){
@@ -116,12 +110,12 @@ int main(int argc, char** argv){
 
 		if(arguments.size()>0){	
 			//check regular files
-			cout<<""<<arguments.size()<<endl;
 			for(unsigned int i=0; i<arguments.size(); i++){
 
 				if(	-1 == stat(arguments[i].c_str(), & buf1)){
-					perror("112 There was an error with stat(). ");
-					exit(1);
+					perror("There was an error with stat(). ");
+					arguments.erase(arguments.begin() + i);
+					i--;					
 				}
 				if(!S_ISDIR(buf1.st_mode)){
 					regFiles.push_back(arguments[i]);
