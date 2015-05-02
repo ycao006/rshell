@@ -11,9 +11,8 @@ main2:
 	g++ -std=c++11 main2.cpp
 main3:
 	g++ -std=c++11 main3.cpp
-cp:
-	g++ src/cp.cpp -Wall -Werror -ansi -pedantic -o cp
 ls: 
 	g++ -Wall -Werror -ansi -pedantic src/ls.cpp -ltermcap -o ls 
 bin:
 	mkdir bin
+
