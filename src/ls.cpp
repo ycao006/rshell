@@ -44,7 +44,7 @@ void printFiles(const string &, const vector<string> & , const int &, const int 
 void printFilesL(const string &, const vector<string> &, const int &, const vector<int> &);
 void printFilesR(const string &, const vector<string> & , const int & , const int &);
 int	numberOfDigits(const int & );
-vector<int> findMax(const vector<string> & );
+vector<int> findMax(const string &, const vector<string> & );
 void printFileDetail(const string &, const string &, const int & );
 bool checkDir(const string & , const string & );
 bool checkEx(const string & , const string & );
@@ -61,7 +61,7 @@ int main(int argc, char** argv){
 		perror("could not access termcap database. \n ");
 	}
 	char* terminalC= (char*)"co";
-	int terminalWidth = tgetnum(terminalC);
+	unsigned int terminalWidth = tgetnum(terminalC);
 	
 	vector<string>arguments;
 	vector<string>flags;
@@ -69,81 +69,139 @@ int main(int argc, char** argv){
 	vector<string>testfiles;
 	int isalR = 0x000;
 	vector<int> maxNLen ;
-
+	vector<string> regFiles; 
+	bool noReg = true;
+ 	
 	//store the inputs
-	
-	for(unsigned int i = 1 ; i < argc ; i++){
-
+	for(int i = 1 ; i < argc ; i++){
+		int j=1;
 		if(argv[i][0] == '-'){
-			flags.push_back(argv[i]);
-		}
-		else{
-			arguments.push_back(argv[i]);	
-		}
-	}
-	
-	if((argc == 2)&&(arguments.size() == 1)){		
-		bool exist=false;
-		testfiles=collectFiles(arguments[0]);
-		for(unsigned int i=0;i<testfiles.size();i++){
-			if( arguments[0] == testfiles[i] ){
-				exist = true;
-				break;
+			if( strcmp(argv[i],"-") == 0){
+					cout<<"sorry invalid input."<<endl;	
+					return 0;
+				}
+
+			while(argv[i][j] != '\0'){
+				if((argv[i][j] == 'a')||(argv[i][j] == 'l')||(argv[i][j] == 'R')){
+					flags.push_back(argv[i]);
+				}
+				else{
+					cout<<"sorry invalid input."<<endl;
+					return 0;
+				}
+				j++;
 			}
 		}
-		if(exist){
-			maxNLen=findMax(arguments);
-			if(checkRF(".",arguments[0])){
-				printFileDetail(".",arguments[0],maxNLen[0]);
-				return 0;
+		else{
+			while(argv[i][j] != '\0'){
+				if((argv[i][j] == 'a')||(argv[i][j] == 'l')||(argv[i][j] == 'R')){
+					arguments.push_back(argv[i]);
+				}
+				else{
+					cout<<"sorry invalid input."<<endl;
+					return 0;
+				}
+				j++;
 			}
 		}
 		
 	}
-	
 	if((argc >1)&&(arguments.size()>0) ){
 		
 		// get the result of -a -l -R
 		isalR = checkFlags(flags);
 		// sort the argument . .. ./src etc in the vector arguments
 		sort(arguments.begin(),arguments.end());
+			
+
 		if(arguments.size()>0){	
+			//check regular files
+			cout<<""<<arguments.size()<<endl;
+			for(unsigned int i=0; i<arguments.size(); i++){
+
+				if(	-1 == stat(arguments[i].c_str(), & buf1)){
+					perror("112 There was an error with stat(). ");
+					exit(1);
+				}
+				if(!S_ISDIR(buf1.st_mode)){
+					regFiles.push_back(arguments[i]);
+					arguments.erase(arguments.begin()+i);
+					i--;
+					noReg = false;
+				}
+			}
+			//output regular files
+			if(regFiles.size() > 0){
+				unsigned int regWord_width = 0;
+				int regCounter = 0;
+				for(unsigned int i=0; i<regFiles.size(); i++){
+					if(regWord_width < regFiles[i].size()){
+							regWord_width = regFiles[i].size();
+							}
+					}
+
+				if((isalR & flag_l)== 0){
+					for(unsigned int i=0; i<regFiles.size(); i++){
+						if(regCounter+regWord_width > terminalWidth){
+							cout << endl;
+							regCounter = 0;
+							regCounter = regWord_width + 2;		
+						}
+						else{
+							regCounter = regCounter + regWord_width + 2;
+						}
+						if(checkEx(".",regFiles[i])){
+							green;
+						}
+						if(checkDir(".",regFiles[i])){
+							blue;
+						}
+						if(regFiles[i][0]=='.'){
+							gray;		
+						}
+						cout << left <<setw(regWord_width)<<regFiles[i];
+						original;
+						cout<<"  ";
+					}
+				}
+				else{
+					vector<int> tempVrg=findMax(".", regFiles);
+					int tempMaxrg=tempVrg[0];
+					for(unsigned int i=0; i<regFiles.size(); i++){
+						printFileDetail(".",regFiles[i],tempMaxrg);	
+					}	
+				}
+				cout<<endl;
+			}
 			for(unsigned int i=0; i<arguments.size(); i++){
 				files = collectFiles (arguments[i]);
 				sort(files.begin(),files.end());
-				maxNLen=findMax(files);
-
+				
+				maxNLen=findMax(arguments[i],files);
+				
 				if(isalR == result_none){
-					cout<<"none "<<endl;
 					printFiles(arguments[i],files,isalR,terminalWidth);	
 				}
 				else if(isalR == result_a){
-					cout<<"only a"<<endl;
 					printFiles(arguments[i],files,isalR,terminalWidth);
 				}
 				else if(isalR == result_l){
-					cout<<"only l 1"<<endl;
 					printFilesL(arguments[i],files,isalR,maxNLen);
 				}
 				else if(isalR == result_R){
-					cout<<"hello R"<<endl;
 					printFilesR(arguments[i],files,isalR,terminalWidth);
 				}
 
 				else if(isalR == result_al){
-					cout<<"a and l"<<endl;
 					printFilesL(arguments[i],files,isalR,maxNLen);
 				}
 				else if(isalR == result_aR){
-					cout<<"hello R"<<endl;
 					printFilesR(arguments[i],files,isalR,terminalWidth);
 				}
 				else if(isalR == result_lR){
-					cout<<"hello R"<<endl;
 					printFilesR(arguments[i],files,isalR,terminalWidth);
 				}
 				else if(isalR == result_alR){
-					cout<<"hello R"<<endl;
 					printFilesR(arguments[i],files,isalR,terminalWidth);
 				}
 	
@@ -152,42 +210,34 @@ int main(int argc, char** argv){
 		}
 	}
 
-	if((argc <= 1)||(arguments.size()<=0)){
+	if( ((argc <= 1)||(arguments.size()<=0)) && noReg ){
 		arguments.push_back(".");
 		files=collectFiles(arguments[0]);
 		sort(files.begin(),files.end());
 		isalR=checkFlags(flags);
-		maxNLen=findMax(files);
+		maxNLen=findMax(arguments[0],files);
 		if(isalR == result_none){
-			cout<<"none "<<endl;
 			printFiles(arguments[0],files,isalR,terminalWidth);	
 		}
 		else if(isalR == result_a){
-			cout<<"only a"<<endl;
 			printFiles(arguments[0],files,isalR,terminalWidth);
 		}
 		else if(isalR == result_l){
-			cout<<"only l"<<endl;
 			printFilesL(arguments[0],files,isalR,maxNLen);
 		}
 		else if(isalR == result_R){
-			cout<<"hello R"<<endl;
 			printFilesR(arguments[0],files,isalR,terminalWidth);
 		}
 		else if(isalR == result_al){
-			cout<<"a and l"<<endl;
 			printFilesL(arguments[0],files,isalR,maxNLen);
 		}
 		else if(isalR == result_aR){
-			cout<<"hello R"<<endl;
 			printFilesR(arguments[0],files,isalR,terminalWidth);	
 		}
 		else if(isalR == result_lR){
-			cout<<"hello R"<<endl;
 			printFilesR(arguments[0],files,isalR,terminalWidth);
 		}
 		else if(isalR == result_alR){
-			cout<<"hello R"<<endl;
 			printFilesR(arguments[0],files,isalR,terminalWidth);
 		}		
 	}
@@ -226,13 +276,11 @@ vector<string> collectFiles(const string & v1){
 	errno = 0;
 	while(NULL != (filespecs = readdir(dirp))){
 				temp_files.push_back(filespecs->d_name);
-			//	cout << filespecs->d_name << " ";
 	}
 	if(errno != 0){
 			perror("There was an error with readdir(). ");
 			exit(1);
 	}
-	//cout << endl;
 	if(-1 == closedir(dirp)){
 			perror("There was an error with closedir(). ");
 			exit(1);
@@ -251,13 +299,18 @@ int  numberOfDigits(const int & n){
 		return len;		
 }
 
-vector<int> findMax(const vector<string> & files){
+vector<int> findMax(const string &a1 , const vector<string> & files){
 	int max=0;
 	int total=0;
 	vector<int> v1;
-	for(unsigned int i=0; i<files.size(); i++){		
+	string pathFind;
+	for(unsigned int i=3; i<files.size(); i++){	
+		pathFind = a1 + "/"+files[i];	
 //  directory name(the one where we want to check files inside) +/+files[i].c_str()
-		stat(files[i].c_str(), &buf);
+		if(-1 == stat(pathFind.c_str(), &buf)){
+			perror(" 308 There was an error with stat()");
+			exit(1);	
+		}
 		if(max<numberOfDigits(buf.st_size)){
 			max=numberOfDigits(buf.st_size);
 		}
@@ -272,9 +325,24 @@ vector<int> findMax(const vector<string> & files){
 void printFileDetail(const string & a1, const string & f1, 
 			const int & max){
 	string path=a1+"/"+f1; 
-	stat(path.c_str(), &buf);
-	struct passwd *pw = getpwuid(buf.st_uid);
-	struct group *gr = getgrgid(buf.st_gid);
+	if(-1 == stat(path.c_str(), &buf)){
+		perror("316 There was an error with stat()");	
+		exit(1);
+	}
+	struct passwd *pw ;
+	errno = 0;
+	pw = getpwuid(buf.st_uid);
+	if(errno != 0){
+		perror("There was an error with getpwuid()");
+		exit(1);
+	}
+	struct group *gr ;
+	errno = 0;
+	gr = getgrgid(buf.st_gid);
+	if(errno != 0){
+		perror("There was an error with getpwuid()");
+		exit(1);
+	}
 	struct tm * tm;
 	// the reason to create path: ls -l need to get the file information from current dir
 	char getTime[256];
@@ -313,19 +381,26 @@ void printFileDetail(const string & a1, const string & f1,
 
 void printFiles(const string & a1, const vector<string> & s1, 
 				const int & flag , const int & terminalWidth){
+	unsigned int word_width=0;
+	for(unsigned int i=0; i<s1.size(); i++){
+			if(word_width < s1[i].size()){
+				word_width = s1[i].size();
+			}
+		}
 	cout<<a1<<": "<<endl;
-	int width=terminalWidth-16;
+	unsigned int width=terminalWidth-8;
 	int counter=0;
 	if((flag & flag_a) == 0)
 	{
 		for(unsigned int i=0; i<s1.size(); i++){
 			if(s1[i][0]!='.'){
-				if(counter+s1[i].size() > width){
+				if(counter+word_width > width){
 					cout<<endl;
-					counter = s1[i].size();		
+					counter = 0;
+					counter = word_width + 2;		
 				}
 				else{
-					counter = counter+s1[i].size()+2;		
+					counter = counter + word_width + 2;		
 				} 
 
 				if(checkEx(a1,s1[i])){
@@ -334,21 +409,21 @@ void printFiles(const string & a1, const vector<string> & s1,
 				if(checkDir(a1,s1[i])){
 					blue;
 				}
-				cout<<s1[i];
+				cout << left <<setw(word_width)<<s1[i];
 				original;
 				cout<<"  ";
 			}
 		}
 	}
 	else{
-
 		for(unsigned int i=0; i<s1.size(); i++){
-			if(counter+s1[i].size() > width){
-				cout<<endl;
-				counter = s1[i].size();		
+			if(counter+word_width > width){
+				cout << endl;
+				counter = 0;
+				counter = word_width + 2;		
 			}
 			else{
-				counter = counter+s1[i].size()+2;
+				counter = counter + word_width + 2;
 			}
 			if(checkEx(a1,s1[i])){
 				green;
@@ -359,7 +434,7 @@ void printFiles(const string & a1, const vector<string> & s1,
 			if(s1[i][0]=='.'){
 				gray;		
 			}
-			cout<<s1[i];
+			cout << left <<setw(word_width)<<s1[i];
 			original;
 			cout<<"  ";
 		}
@@ -380,14 +455,12 @@ void printFilesL(const string & a1, const vector<string> & s1,
 		for(unsigned int i=0 ; i<s1.size(); i++){
 			if(s1[i][0] != '.'){
 				printFileDetail(a1 , s1[i] , max[0]);
-				cout<<"i: "<<i<<endl;	
 			}
 		}
 	}
 	else{
 		for(unsigned int i=0 ; i<s1.size(); i++){
 				printFileDetail(a1,s1[i],max[0]);
-				cout<<"i: "<<i<<endl;
 		}		
 	}
 }
@@ -395,7 +468,10 @@ void printFilesL(const string & a1, const vector<string> & s1,
 bool checkDir(const string & a1, const string & f1){
 	bool temp_flag = false;
 	string path=a1 + "/" + f1;
-	stat(path.c_str(), & buf1);
+	if(-1 ==stat(path.c_str(), & buf1)){
+		perror(" 459 There was an error with stat()");	
+		exit(1);
+	}
 	if(S_ISDIR(buf1.st_mode)){
 		temp_flag = true;	
 	}
@@ -404,7 +480,10 @@ bool checkDir(const string & a1, const string & f1){
 
 bool checkEx(const string & a1, const string & f1){
 	string path=a1 + "/" + f1;
-	stat(path.c_str(), & buf1);
+	if(-1 == stat(path.c_str(), & buf1) ){
+		perror(" 471 There was an error with stat()");	
+		exit(1);
+	}
 	bool temp_flag = false;
 	if(buf1.st_mode & S_IXUSR){
 		temp_flag = true;	
@@ -414,7 +493,10 @@ bool checkEx(const string & a1, const string & f1){
 
 bool checkRF(const string & a1, const string & f1){
 	string path=a1 + "/" + f1;
-	stat(path.c_str(), & buf1);
+	if(-1 == stat(path.c_str(), & buf1)){
+		perror("493 There was an error with stat()");
+		exit(1);
+	}
 	bool temp_flag = false;
 	if(S_ISREG(buf1.st_mode)){
 		temp_flag = true;	
@@ -425,9 +507,12 @@ bool checkRF(const string & a1, const string & f1){
 void printFilesR(const string &a1, const vector<string> & files, 
 			    	const int & flag, const int & terminalWidth){
 	vector<string> tempDirs;
+	//test
+//	cout<<"a1: "<<a1<<endl;
+	
+
 	if( (flag & flag_l) == 0){
 		// no l
-		cout<<a1<<":"<<endl;
 		printFiles(a1,files,flag,terminalWidth);
 		cout<<endl;
 		for(unsigned int i=0; i<files.size(); i++){
@@ -461,8 +546,8 @@ void printFilesR(const string &a1, const vector<string> & files,
 
 	else{
 		// have l
-		vector<int> maxNLen=findMax(files);
-		cout<<a1<<":"<<endl;
+		vector<int> maxNLen;
+		maxNLen=findMax(a1, files);
 		printFilesL(a1, files, flag, maxNLen);
 		cout<<endl<<endl;
 		for(unsigned int i=0; i<files.size(); i++){
