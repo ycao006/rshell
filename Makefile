@@ -2,7 +2,7 @@ all: rshell ls | bin
 	mv ./rshell ./bin
 	mv ./ls ./bin
 rshell: 
-	g++ -Wall -Werror -ansi -pedantic -std=c++11 -o rshell ./src/main.cpp
+	g++ -Wall -Werror -ansi -pedantic -std=c++11 -o rshell ./src/redirect.cpp
 main:
 	g++ -std=c++11 main.cpp
 test:
@@ -13,6 +13,8 @@ main3:
 	g++ -std=c++11 main3.cpp
 ls: 
 	g++ -Wall -Werror -ansi -pedantic src/ls.cpp -ltermcap -o ls 
+test3:
+	g++ -Wall -Werror -ansi -pedantic -std=c++11 -o test3 ./src/test3.cpp
 bin:
 	mkdir bin
 
