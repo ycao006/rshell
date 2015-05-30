@@ -84,7 +84,10 @@ int main(){
 		ctrlZ.sa_flags = SA_SIGINFO;
 		sigaction(SIGTSTP, &ctrlZ,NULL);
 
-		char library[512] = "/class/classes/ycao006/cs100/rshell/bin:";
+		char library[512];
+		char *signal_pwd = getenv("PWD");
+		strcpy(library, signal_pwd);
+		strcat(library,"/bin:");
 		char *path = getenv("PATH");
 		strcat(library, path);
 		setenv("PATH", library, 1);
