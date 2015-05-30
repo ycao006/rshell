@@ -1,0 +1,363 @@
+Script started on Fri 29 May 2015 11:40:20 PM PDT
+~
+ycao006@hammer $ cs100
+[0;91m
+===============================================================================
+|                                                                             |
+| You have enabled settings specific for cs100.  Everything you do is being   |
+| recorded to measure your progress in the class.                             |
+|                                                                             |
+| Important commands for the class:                                           |
+|   * calcgrade.sh          displays a detailed breakdown of your grade       |
+|   * checksyscalls.sh      is your cpp file doing proper error checking?     |
+|   * typespeed             practice typing unix commands                     |
+|                                                                             |
+| Important commands for general C++ programming:                             |
+|   * make                  don't call g++ manually; let make do the work!    |
+|   * gdb                   the GNU debugger                                  |
+|   * valgrind              get rid of your memory leaks                      |
+|   * cppcheck              static analysis tool                              |
+|   * man                   find help about any syscall / terminal command    |
+|                                                                             |
+===============================================================================
+[0m
+[s%%%%%%%%%%[u[0;32mycao006[0;36m@[0;32mcs100[0;36m:[0;32m~[0;95m [0;36m$[0m l[Kcd cs100.r[K[K/rshell/
+[s%%%%%%%%%%[u[0;32mycao006[0;36m@[0;32mcs100[0;36m:[0;32m~/cs100/rshell[0;95m (signal) [0;36m$[0m make
+g++ -Wall -Werror -ansi -pedantic -std=c++11 -o rshell ./src/signal.cpp
+g++ -Wall -Werror -ansi -pedantic src/ls.cpp -ltermcap -o ls 
+mv ./rshell ./bin
+mv ./ls ./bin
+[s%%%%%%%%%%[u[0;32mycao006[0;36m@[0;32mcs100[0;36m:[0;32m~/cs100/rshell[0;95m (signal) [0;36m$[0m clear
+[H[2J[s%%%%%%%%%%[u[0;32mycao006[0;36m@[0;32mcs100[0;36m:[0;32m~/cs100/rshell[0;95m (signal) [0;36m$[0m bin/rshell 
+ycao006@hammer.cs.ucr.edu : ~/cs100/rshell $ # test    Hello 
+ycao006@hammer.cs.ucr.edu : ~/cs100/rshell $ # test cd <path>
+ycao006@hammer.cs.ucr.edu : ~/cs100/rshell $ cd ./
+ycao006@hammer.cs.ucr.edu : ~/cs100/rshell $ cd .
+ycao006@hammer.cs.ucr.edu : ~/cs100/rshell $ cd ../
+ycao006@hammer.cs.ucr.edu : ~/cs100 $ cd -
+ycao006@hammer.cs.ucr.edu : ~/cs100/rshell $ ls
+.: 
+LICENSE.md[0m  Makefile  [0m  README.md [0m  [38;5;46m[38;5;21mbin       [0m  [38;5;46m[38;5;21mcp        [0m  [38;5;46m[38;5;21mdir       [0m  file      [0m  
+file1     [0m  file2     [0m  inputfile [0m  outfile   [0m  [38;5;46m[38;5;21msrc       [0m  [38;5;46m[38;5;21mtests     [0m  
+ycao006@hammer.cs.ucr.edu : ~/cs100/rshell $ c pwd
+/class/classes/ycao006/cs100/rshell
+ycao006@hammer.cs.ucr.edu : ~/cs100/rshell $ cd class/classes
+there was an error with chdir(): No such file or directory
+ycao006@hammer.cs.ucr.edu : ~/cs100/rshell $ cd ./  /class/classes
+ycao006@hammer.cs.ucr.edu : /class/classes $ cd - -
+ycao006@hammer.cs.ucr.edu : ~/cs100/rshell $ cd /
+ycao006@hammer.cs.ucr.edu : / $ cd -
+ycao006@hammer.cs.ucr.edu : ~/cs100/rshell $ cd .///////
+ycao006@hammer.cs.ucr.edu : ~/cs100/rshell $ cd .////////.//../
+ycao006@hammer.cs.ucr.edu : ~/cs100 $ cd -
+ycao006@hammer.cs.ucr.edu : ~/cs100/rshell $ cd notexit
+there was an error with chdir(): No such file or directory
+ycao006@hammer.cs.ucr.edu : ~/cs100/rshell $ cd -
+ycao006@hammer.cs.ucr.edu : ~/cs100 $ cd rshell
+ycao006@hammer.cs.ucr.edu : ~/cs100/rshell $ cd  ls
+.: 
+LICENSE.md[0m  Makefile  [0m  README.md [0m  [38;5;46m[38;5;21mbin       [0m  [38;5;46m[38;5;21mcp        [0m  [38;5;46m[38;5;21mdir       [0m  file      [0m  
+file1     [0m  file2     [0m  inputfile [0m  outfile   [0m  [38;5;46m[38;5;21msrc       [0m  [38;5;46m[38;5;21mtests     [0m  
+ycao006@hammer.cs.ucr.edu : ~/cs100/rshell $ cd .//   ..// rshell/src
+ycao006@hammer.cs.ucr.edu : ~/cs100/rshell/src $ cd -
+ycao006@hammer.cs.ucr.edu : ~/cs100/rshell $ cd ../
+ycao006@hammer.cs.ucr.edu : ~/cs100 $ cd rshell//////src
+ycao006@hammer.cs.ucr.edu : ~/cs100/rshell/src $ cd /
+ycao006@hammer.cs.ucr.edu : / $ ps
+  PID TTY          TIME CMD
+ 6551 pts/17   00:00:00 bash
+ 6619 pts/17   00:00:00 rshell
+ 7028 pts/17   00:00:00 ps
+ycao006@hammer.cs.ucr.edu : / $ pwd
+/
+ycao006@hammer.cs.ucr.edu : / $ cd -
+ycao006@hammer.cs.ucr.edu : ~/cs100/rshell/src $ pwd
+/class/classes/ycao006/cs100/rshell/src
+ycao006@hammer.cs.ucr.edu : ~/cs100/rshell/src $ cd 
+ycao006@hammer.cs.ucr.edu : ~ $ pwd
+/class/classes/ycao006
+ycao006@hammer.cs.ucr.edu : ~ $ cd -
+ycao006@hammer.cs.ucr.edu : ~/cs100/rshell/src $ # c
+ycao006@hammer.cs.ucr.edu : ~/cs100/rshell/src $ # cd
+ycao006@hammer.cs.ucr.edu : ~/cs100/rshell/src $ c d  d pwd     / 
+ycao006@hammer.cs.ucr.edu : ~ $ cd -
+ycao006@hammer.cs.ucr.edu : ~/cs100/rshell/src $ # ctrl c
+ycao006@hammer.cs.ucr.edu : ~/cs100/rshell/src $ bin   ls
+.: 
+Timer.h        [0m  [38;5;46ma.out          [0m  ls.cpp         [0m  [38;5;46mmain.cpp       [0m  
+mv.cpp         [0m  redirect.cpp   [0m  rm.cpp         [0m  signal.cpp     [0m  
+test.cpp       [0m  test41.cpp~    [0m  test42.cpp     [0m  [38;5;46mwhile          [0m  
+while.cpp      [0m  
+ycao006@hammer.cs.ucr.edu : ~/cs100/rshell/src $ ./while
+what a wonderful day!
+what a wonderful day!
+what a wonderful day!
+what a wonderful day!
+what a wonderful day!
+what a wonderful day!
+^Ckill pid: 7552
+
+ycao006@hammer.cs.ucr.edu : ~/cs100/rshell/src $ ./while       ps
+  PID TTY          TIME CMD
+ 6551 pts/17   00:00:00 bash
+ 6619 pts/17   00:00:00 rshell
+ 7578 pts/17   00:00:00 ps
+ycao006@hammer.cs.ucr.edu : ~/cs100/rshell/src $ ./while
+what a wonderful day!
+what a wonderful day!
+what a wonderful day!
+çwhat a wonderful day!
+what a wonderful day!
+^Ckill pid: 7597
+
+ycao006@hammer.cs.ucr.edu : ~/cs100/rshell/src $ ps
+  PID TTY          TIME CMD
+ 6551 pts/17   00:00:00 bash
+ 6619 pts/17   00:00:00 rshell
+ 7615 pts/17   00:00:00 ps
+ycao006@hammer.cs.ucr.edu : ~/cs100/rshell/src $ ^C
+ycao006@hammer.cs.ucr.edu : ~/cs100/rshell/src $ ^C
+ycao006@hammer.cs.ucr.edu : ~/cs100/rshell/src $ ^C
+ycao006@hammer.cs.ucr.edu : ~/cs100/rshell/src $ ^C
+ycao006@hammer.cs.ucr.edu : ~/cs100/rshell/src $ ^C
+ycao006@hammer.cs.ucr.edu : ~/cs100/rshell/src $ ps
+  PID TTY          TIME CMD
+ 6551 pts/17   00:00:00 bash
+ 6619 pts/17   00:00:00 rshell
+ 7628 pts/17   00:00:00 ps
+ycao006@hammer.cs.ucr.edu : ~/cs100/rshell/src $ ./while         cat
+^Ckill pid: 7676
+
+ycao006@hammer.cs.ucr.edu : ~/cs100/rshell/src $ ps
+  PID TTY          TIME CMD
+ 6551 pts/17   00:00:00 bash
+ 6619 pts/17   00:00:00 rshell
+ 7686 pts/17   00:00:00 ps
+ycao006@hammer.cs.ucr.edu : ~/cs100/rshell/src $ # test ctrl z
+ycao006@hammer.cs.ucr.edu : ~/cs100/rshell/src $ ./while
+what a wonderful day!
+what a wonderful day!
+what a wonderful day!
+what a wonderful day!
+what a wonderful day!
+^Z
+ycao006@hammer.cs.ucr.edu : ~/cs100/rshell/src $ ps
+  PID TTY          TIME CMD
+ 6551 pts/17   00:00:00 bash
+ 6619 pts/17   00:00:00 rshell
+ 7751 pts/17   00:00:00 while
+ 7761 pts/17   00:00:00 ps
+ycao006@hammer.cs.ucr.edu : ~/cs100/rshell/src $ fg
+what a wonderful day!
+what a wonderful day!
+what a wonderful day!
+^Z
+ycao006@hammer.cs.ucr.edu : ~/cs100/rshell/src $ ps
+  PID TTY          TIME CMD
+ 6551 pts/17   00:00:00 bash
+ 6619 pts/17   00:00:00 rshell
+ 7751 pts/17   00:00:00 while
+ 7845 pts/17   00:00:00 ps
+ycao006@hammer.cs.ucr.edu : ~/cs100/rshell/src $ fg
+what a wonderful day!
+what a wonderful day!
+what a wonderful day!
+^Ckill pid: 7751
+
+ycao006@hammer.cs.ucr.edu : ~/cs100/rshell/src $ ps
+  PID TTY          TIME CMD
+ 6551 pts/17   00:00:00 bash
+ 6619 pts/17   00:00:00 rshell
+ 7890 pts/17   00:00:00 ps
+ycao006@hammer.cs.ucr.edu : ~/cs100/rshell/src $ ./while
+what a wonderful day!
+what a wonderful day!
+what a wonderful day!
+^Z
+ycao006@hammer.cs.ucr.edu : ~/cs100/rshell/src $ ps  ps
+  PID TTY          TIME CMD
+ 6551 pts/17   00:00:00 bash
+ 6619 pts/17   00:00:00 rshell
+ 7901 pts/17   00:00:00 while
+ 7923 pts/17   00:00:00 ps
+ycao006@hammer.cs.ucr.edu : ~/cs100/rshell/src $ bg
+what a wonderful day!
+ycao006@hammer.cs.ucr.edu : ~/cs100/rshell/src $ what a wonderful day!
+what a wonderful day!
+what a wonderful day!
+ps
+  PID TTY          TIME CMD
+ 6551 pts/17   00:00:00 bash
+ 6619 pts/17   00:00:00 rshell
+ 7901 pts/17   00:00:00 while
+ 8017 pts/17   00:00:00 ps
+ycao006@hammer.cs.ucr.edu : ~/cs100/rshell/src $ what a wonderful day!
+what a wonderful day!
+what a wonderful day!
+what a wonderful day!
+what a wonderful day!
+what a wonderful day!
+^Z
+ycao006@hammer.cs.ucr.edu : ~/cs100/rshell/src $ what a wonderful day!
+^Z
+ycao006@hammer.cs.ucr.edu : ~/cs100/rshell/src $ what a wonderful day!
+what a wonderful day!
+^C
+ycao006@hammer.cs.ucr.edu : ~/cs100/rshell/src $ what a wonderful day!
+^C
+ycao006@hammer.cs.ucr.edu : ~/cs100/rshell/src $ what a wonderful day!
+^C
+ycao006@hammer.cs.ucr.edu : ~/cs100/rshell/src $ pswhat a wonderful day!
+
+  PID TTY          TIME CMD
+ 6551 pts/17   00:00:00 bash
+ 6619 pts/17   00:00:00 rshell
+ 7901 pts/17   00:00:00 while
+ 8075 pts/17   00:00:00 ps
+ycao006@hammer.cs.ucr.edu : ~/cs100/rshell/src $ what a wonderful day!
+fwhat a wonderful day!
+g
+what a wonderful day!
+what a wonderful day!
+what a wonderful day!
+^Z
+ycao006@hammer.cs.ucr.edu : ~/cs100/rshell/src $ ps
+  PID TTY          TIME CMD
+ 6551 pts/17   00:00:00 bash
+ 6619 pts/17   00:00:00 rshell
+ 7901 pts/17   00:00:00 while
+ 8095 pts/17   00:00:00 ps
+ycao006@hammer.cs.ucr.edu : ~/cs100/rshell/src $ fg
+what a wonderful day!
+what a wonderful day!
+^Ckill pid: 7901
+
+ycao006@hammer.cs.ucr.edu : ~/cs100/rshell/src $ ps
+  PID TTY          TIME CMD
+ 6551 pts/17   00:00:00 bash
+ 6619 pts/17   00:00:00 rshell
+ 8120 pts/17   00:00:00 ps
+ycao006@hammer.cs.ucr.edu : ~/cs100/rshell/src $ ./while
+what a wonderful day!
+what a wonderful day!
+what a wonderful day!
+^Z
+ycao006@hammer.cs.ucr.edu : ~/cs100/rshell/src $ ps
+  PID TTY          TIME CMD
+ 6551 pts/17   00:00:00 bash
+ 6619 pts/17   00:00:00 rshell
+ 8144 pts/17   00:00:00 while
+ 8160 pts/17   00:00:00 ps
+ycao006@hammer.cs.ucr.edu : ~/cs100/rshell/src $ ./while
+what a wonderful day!
+what a wonderful day!
+what a wonderful day!
+^Z
+ycao006@hammer.cs.ucr.edu : ~/cs100/rshell/src $ ps
+  PID TTY          TIME CMD
+ 6551 pts/17   00:00:00 bash
+ 6619 pts/17   00:00:00 rshell
+ 8144 pts/17   00:00:00 while
+ 8166 pts/17   00:00:00 while
+ 8179 pts/17   00:00:00 ps
+ycao006@hammer.cs.ucr.edu : ~/cs100/rshell/src $ fg
+what a wonderful day!
+what a wonderful day!
+what a wonderful day!
+what a wonderful day!
+pswhat a wonderful day!
+
+what a wonderful day!
+what a wonderful day!
+^Ckill pid: 8166
+
+ycao006@hammer.cs.ucr.edu : ~/cs100/rshell/src $ ps
+  PID TTY          TIME CMD
+ 6551 pts/17   00:00:00 bash
+ 6619 pts/17   00:00:00 rshell
+ 8144 pts/17   00:00:00 while
+ 8239 pts/17   00:00:00 ps
+ycao006@hammer.cs.ucr.edu : ~/cs100/rshell/src $ fg  bg
+what a wonderful day!
+ycao006@hammer.cs.ucr.edu : ~/cs100/rshell/src $ what a wonderful day!
+what a wonderful day!
+what a wonderful day!
+what a wonderful day!
+./what a wonderful day!
+whilewhat a wonderful day!
+
+what a wonderful day!
+what a wonderful day!
+what a wonderful day!
+what a wonderful day!
+what a wonderful day!
+what a wonderful day!
+what a wonderful day!
+^Z
+ycao006@hammer.cs.ucr.edu : ~/cs100/rshell/src $ what a wonderful day!
+what a wonderful day!
+pwhat a wonderful day!
+s
+  PID TTY          TIME CMD
+ 6551 pts/17   00:00:00 bash
+ 6619 pts/17   00:00:00 rshell
+ 8144 pts/17   00:00:00 while
+ 8301 pts/17   00:00:00 while
+ 8309 pts/17   00:00:00 ps
+ycao006@hammer.cs.ucr.edu : ~/cs100/rshell/src $ what a wonderful day!
+what a wonderful day!
+what a wonderful day!
+bwhat a wonderful day!
+gwhat a wonderful day!
+
+what a wonderful day!
+ycao006@hammer.cs.ucr.edu : ~/cs100/rshell/src $ what a wonderful day!
+what a wonderful day!
+what a wonderful day!
+what a wonderful day!
+ps
+  PID TTY          TIME CMD
+ 6551 pts/17   00:00:00 bash
+ 6619 pts/17   00:00:00 rshell
+what a wonderful day!
+ 8144 pts/17   00:00:00 while
+ 8301 pts/17   00:00:00 while
+ 8312 pts/17   00:00:00 ps
+ycao006@hammer.cs.ucr.edu : ~/cs100/rshell/src $ what a wonderful day!
+what a wonderful day!
+what a wonderful day!
+what a wonderful day!
+what a wonderful day!
+what a wonderful day!
+what a wonderful day!
+fg
+what a wonderful day!
+what a wonderful day!
+what a wonderful day!
+what a wonderful day!
+^Ckill pid: 8301
+
+ycao006@hammer.cs.ucr.edu : ~/cs100/rshell/src $ what a wonderful day!
+what a wonderful day!
+what a wonderful day!
+fg
+what a wonderful day!
+what a wonderful day!
+^Ckill pid: 8144
+
+ycao006@hammer.cs.ucr.edu : ~/cs100/rshell/src $ ps
+  PID TTY          TIME CMD
+ 6551 pts/17   00:00:00 bash
+ 6619 pts/17   00:00:00 rshell
+ 8327 pts/17   00:00:00 ps
+ycao006@hammer.cs.ucr.edu : ~/cs100/rshell/src $ # thei  is is the end of the test
+ycao006@hammer.cs.ucr.edu : ~/cs100/rshell/src $ # thank you very much 
+ycao006@hammer.cs.ucr.edu : ~/cs100/rshell/src $ # have a nice day!
+ycao006@hammer.cs.ucr.edu : ~/cs100/rshell/src $ ex  exit
+[s%%%%%%%%%%[u[0;32mycao006[0;36m@[0;32mcs100[0;36m:[0;32m~/cs100/rshell[0;95m (signal) [0;36m$[0m exit
+exit
+~
+ycao006@hammer $ exit
+exit
+
+Script done on Fri 29 May 2015 11:50:43 PM PDT

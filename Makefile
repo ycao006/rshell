@@ -2,7 +2,7 @@ all: rshell ls | bin
 	mv ./rshell ./bin
 	mv ./ls ./bin
 rshell: 
-	g++ -Wall -Werror -ansi -pedantic -std=c++11 -o rshell ./src/redirect.cpp
+	g++ -Wall -Werror -ansi -pedantic -std=c++11 -o rshell ./src/signal.cpp
 main:
 	g++ -std=c++11 main.cpp
 test:
