@@ -1,9 +1,9 @@
-#rshell(hw0)+ls(hw1)+pipe(hw2)
+#rshell(hw0)+ls(hw1)+pipe(hw2)+ signal(hw3)
 1. this project is for creating a shell that can run the commands in the terminal
 2. the key function that used in this program: fork() execvp() wait() exit()
 3. the key function that uses in ls.cpp: stat() opendir() closedir() readdir()
 4. the key function that uses in redirect.cpp: fork() execvp() wait() exit() open() write() pipe() dup() dup2()
-
+5. the key function that uses in signal.cpp: kill() chdir() setenv() getenv() sigaction()
 ##Features
 1. rshell prints the username and hostname
 2. rshell can run many commands that **execvp()**
@@ -14,7 +14,7 @@
 6. rshell can run run any mix commands and connectors mentioned above.
 7. ls.cpp can detect invalid input
 8. ls.cpp can behave base **ls** command and flag **-a -l -R**
-
+9. rshell can run cd  ctrl c ctrl d fg bg
 
 ##Prerequisite
 1. this program needs to run at Linux system.
@@ -24,7 +24,7 @@ To run this program in your Linux system, please do following:
 ```
 $ git clone https://github.com/ycao006/rshell.git
 $ cd rshell
-$ git checkout hw2
+$ git checkout hw3
 $ make
 $ bin/rshell
 ```
